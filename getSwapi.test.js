@@ -7,6 +7,9 @@ Expect Assertions method tells us how many assertions we are expected
    => And here only ONE assertion, data.count=87
    => problem with async, need to wait to be done
 
+Often usefullm when testing async code,
+  => to make sure that assertions in a cb actually got called
+
 it('calls swapi to get people', (done) => {
   expect.assertions(1);
   
@@ -48,17 +51,21 @@ it('calls swapi to get people with a promise', () => {
 /*  MOCKS:
 fake a function, pretend to have it running
   let us spy on the behavior of a function
-  that its call indirectly  by some other quote
+  that its call indirectly  by some other code
   Rather than just testing the output then waiting for
   the async code to complete
 */
 it('getSwapiPeople returns count and results', () => {
-  // jest.fn() & .mockReturnValue()
+  /* jest.fn() & .mockReturnValue()
+   *  jest.fn() create a mock function
+   *    => if no implementation 
+   *    => return undefined when invoked
+   */
   const mockFetch = jest.fn()
     .mockReturnValue(Promise.resolve({
       json: () => Promise.resolve({
         count: 89,
-        results: [0, 1, 2, 3, 4, , 5]
+        results: [0,1,2,3,4,5]
       })
     }))
 
