@@ -1,3 +1,6 @@
-it('this is a test', () => {
+const googleSearch = require('./script');
 
+
+it('this is a test', () => {
+  console.log(googleSearch);
 }); 
