@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 
-const getSwapiPromise = fetch => {
+const getSwapiPeoplePromise = fetch => {
   return fetch("https://swapi.py4e.com/api/people/")
     .then(response => response.json())
     .then(data => {
@@ -13,7 +13,7 @@ const getSwapiPromise = fetch => {
     })
 }
 
-const getSwapi = async fetch => {
+const getSwapiPeople = async fetch => {
   const getRequest = await fetch("https://swapi.py4e.com/api/people/");
   const getData = await getRequest.json();
 
@@ -25,12 +25,13 @@ const getSwapi = async fetch => {
   }
 }
 
-//getSwapi(fetch);
+//getSwapiPeople(fetch);
+//getSwapiPeoplePromise(fetch);
 
 
 
 
 module.exports = {
-  getSwapiPromise,
-  getSwapi
+  getSwapiPeoplePromise,
+  getSwapiPeople
 };
